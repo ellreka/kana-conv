@@ -4,9 +4,13 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ellreka/kanadaku.git"
+    "url": "https://github.com/ellreka/kanadaku"
   },
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "rimraf ./dist && tsc -p tsconfig.json --outDir dist --rootDir src",
     "test": "jest"
