@@ -7,8 +7,6 @@
 濁音に変換する
 
 ```ts
-import { toDakuon } from 'kana-conv'
-
-toDakuon("こんにちはさよなら")
-// ごんにぢばざよなら
+toDakuon("こんにちはさよなら");
+// => ごんにぢばざよなら
 ```

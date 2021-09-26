@@ -1,44 +1,34 @@
-const dakuList = [
-  "か",
-  "き",
-  "く",
-  "け",
-  "こ",
-  "さ",
-  "し",
-  "す",
-  "せ",
-  "そ",
-  "た",
-  "ち",
-  "つ",
-  "て",
-  "と",
-  "は",
-  "ひ",
-  "ふ",
-  "へ",
-  "ほ",
-];
-
-const haList = ["ぱ", "ぴ", "ぷ", "ぺ", "ぽ"];
+import { DAKU_HIRAGANA, DAKU_KATAKANA, PA_HIRAGANA, PA_KATAKANA } from './constants'
+import { DAKU_Options } from './types'
 
 /**
- * 日本語文字列を濁音に変換する
+ * 日本語文字列を濁音に変換する関数
  */
-export const toDakuon = (text: string): string => {
-  const textArray = Array.from(text);
+export const toDakuon = (text: string, options?: DAKU_Options): string => {
+  const textArray = Array.from(text.normalize('NFC'))
+
+  const dakuList = new Set(
+    options?.onlyHiragana ? DAKU_HIRAGANA : options?.onlyKatakana ? DAKU_KATAKANA : [...DAKU_HIRAGANA, ...DAKU_KATAKANA]
+  )
+
+  const paList = new Set(
+    options?.onlyHiragana ? [...PA_HIRAGANA] : options?.onlyKatakana ? PA_KATAKANA : [...PA_HIRAGANA, ...PA_KATAKANA]
+  )
+
   const result = textArray.reduce(
     (prev, char) => {
-      if (new Set(dakuList).has(char)) {
-        return prev.concat(String.fromCharCode(char.charCodeAt(0) + 1));
+      if (new Set(options?.ignoreList).has(char)) {
+        return prev.concat(char)
       }
-      if (new Set(haList).has(char)) {
-        return prev.concat(String.fromCharCode(text.charCodeAt(0) - 1));
+      if (dakuList.has(char)) {
+        return prev.concat(String.fromCharCode(char.charCodeAt(0) + 1))
       }
-      return prev.concat(char);
+      if (paList.has(char)) {
+        return prev.concat(String.fromCharCode(char.charCodeAt(0) - 1))
+      }
+      return prev.concat(char)
     },
-    [""]
-  );
-  return result.join("");
-};
+    ['']
+  )
+  return result.join('')
+}
