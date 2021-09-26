@@ -2,9 +2,13 @@
   "name": "kanadaku",
   "version": "1.0.1",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ellreka/kanadaku.git"
+  },
   "main": "dist/index.js",
   "scripts": {
-    "build": "rimraf ./dist && tsc src/index.ts --outDir dist",
+    "build": "rimraf ./dist && tsc -p tsconfig.json --outDir dist --rootDir src",
     "test": "jest"
   },
   "devDependencies": {
