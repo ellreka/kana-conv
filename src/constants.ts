@@ -1,3 +1,15 @@
+export const HA_HIRAGANA = ['は', 'ひ', 'ふ', 'へ', 'ほ']
+
+export const HA_KATAKANA = ['ハ', 'ヒ', 'フ', 'ヘ', 'ホ']
+
+export const BA_HIRAGANA = ['ば', 'び', 'ぶ', 'べ', 'ぼ']
+
+export const BA_KATAKANA = ['バ', 'ビ', 'ブ', 'ベ', 'ボ']
+
+export const PA_HIRAGANA = ['ぱ', 'ぴ', 'ぷ', 'ぺ', 'ぽ']
+
+export const PA_KATAKANA = ['パ', 'ピ', 'プ', 'ペ', 'ポ']
+
 export const DAKU_HIRAGANA = [
   'か',
   'き',
@@ -14,11 +26,7 @@ export const DAKU_HIRAGANA = [
   'つ',
   'て',
   'と',
-  'は',
-  'ひ',
-  'ふ',
-  'へ',
-  'ほ'
+  ...HA_HIRAGANA
 ]
 
 export const DAKU_KATAKANA = [
@@ -37,17 +45,5 @@ export const DAKU_KATAKANA = [
   'ツ',
   'テ',
   'ト',
-  'ハ',
-  'ヒ',
-  'フ',
-  'ヘ',
-  'ホ'
+  ...HA_KATAKANA
 ]
-
-export const BA_HIRAGANA = ['ば', 'び', 'ぶ', 'べ', 'ぼ']
-
-export const BA_KATAKANA = ['バ', 'ビ', 'ブ', 'ベ', 'ボ']
-
-export const PA_HIRAGANA = ['ぱ', 'ぴ', 'ぷ', 'ぺ', 'ぽ']
-
-export const PA_KATAKANA = ['パ', 'ピ', 'プ', 'ペ', 'ポ']

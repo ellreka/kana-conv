@@ -19,3 +19,21 @@ toDakuon('こんにちはさよなら コンニチハサヨナラ', { onlyKataka
 toDakuon('こんにちはさよなら コンニチハサヨナラ', { ignoreList: ['こ', 'ち', 'は'] })
 // => こんにちはざよなら ゴンニヂバザヨナラ
 ```
+
+## toHandakuon
+
+半濁音に変換する
+
+```ts
+toHandakuon('はひふへほ')
+// => ぱぴぷぺぽ
+
+toHandakuon('はひふへほ ハヒフヘホ', { onlyHiragana: true })
+// => ぱぴぷぺぽ ハヒフヘホ
+
+toHandakuon('はひふへほ ハヒフヘホ', { onlyKatakana: true })
+// => はひふへほ パピプペポ
+
+toHandakuon('はひふへほ ハヒフヘホ', { ignoreList: ['は', 'ハ'] })
+// => はぴぷぺぽ ハピプペポ
+```
