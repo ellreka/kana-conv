@@ -2,6 +2,16 @@
 
 ひらがな・カタカナを濁音、半濁音に変換する
 
+## Install
+
+```bash
+yarn add kanadaku
+```
+
+```ts
+import { toDakuon, toHandakuon } from 'kanadaku'
+```
+
 ## toDakuon
 
 濁音に変換する
