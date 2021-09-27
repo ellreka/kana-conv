@@ -49,3 +49,12 @@ toHandakuon('はひふへほ ハヒフヘホ', { onlyKatakana: true })
 toHandakuon('はひふへほ ハヒフヘホ', { ignoreList: ['は', 'ハ'] })
 // => はぴぷぺぽ ハピプペポ
 ```
+
+## toSeion
+
+濁音・半濁音を清音に変換する
+
+```ts
+toSeion('ごんぎつね')
+// => こんきつね
+```

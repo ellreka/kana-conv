@@ -1,4 +1,4 @@
-import { DAKU_HIRAGANA, DAKU_KATAKANA, PA_HIRAGANA, PA_KATAKANA } from './constants'
+import { SEI_HIRAGANA, SEI_KATAKANA, PA_HIRAGANA, PA_KATAKANA } from './constants'
 import { DAKU_Options } from './types'
 
 /**
@@ -15,7 +15,7 @@ export const toDakuon = (
   const onlyKatakana = passKatakana && passHiragana === false
 
   const dakuList = new Set(
-    onlyHiragana ? DAKU_HIRAGANA : onlyKatakana ? DAKU_KATAKANA : [...DAKU_HIRAGANA, ...DAKU_KATAKANA]
+    onlyHiragana ? SEI_HIRAGANA : onlyKatakana ? SEI_KATAKANA : [...SEI_HIRAGANA, ...SEI_KATAKANA]
   )
 
   const paList = new Set(
