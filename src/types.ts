@@ -1,12 +1,14 @@
 type Options = {
   /**
-   * ひらがなのみを変換する
+   * ひらがなを変換する
+   * @defaultValue `true`
    */
-  onlyHiragana?: boolean
+  passHiragana?: boolean
   /**
-   * カタカナのみを変換する
+   * カタカナを変換する
+   * @defaultValue `true`
    */
-  onlyKatakana?: boolean
+  passKatakana?: boolean
   /**
    * 変換しない文字列のリスト
    */

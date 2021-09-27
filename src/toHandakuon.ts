@@ -4,20 +4,27 @@ import { HANDAKU_Options } from './types'
 /**
  * 日本語文字列を半濁音に変換する関数
  */
-export const toHandakuon = (text: string, options?: HANDAKU_Options): string => {
+export const toHandakuon = (
+  text: string,
+  { passHiragana = true, passKatakana = true, ignoreList }: HANDAKU_Options = {}
+): string => {
   const textArray = Array.from(text.normalize('NFC'))
 
-  const haList = new Set(
-    options?.onlyHiragana ? HA_HIRAGANA : options?.onlyKatakana ? HA_KATAKANA : [...HA_HIRAGANA, ...HA_KATAKANA]
-  )
+  const onlyHiragana = passHiragana && passKatakana === false
 
-  const baList = new Set(
-    options?.onlyHiragana ? BA_HIRAGANA : options?.onlyKatakana ? BA_KATAKANA : [...BA_HIRAGANA, ...BA_KATAKANA]
-  )
+  const onlyKatakana = passKatakana && passHiragana === false
+
+  const haList = new Set(onlyHiragana ? HA_HIRAGANA : onlyKatakana ? HA_KATAKANA : [...HA_HIRAGANA, ...HA_KATAKANA])
+
+  const baList = new Set(onlyHiragana ? BA_HIRAGANA : onlyKatakana ? BA_KATAKANA : [...BA_HIRAGANA, ...BA_KATAKANA])
+
+  if (!passHiragana && !passKatakana) {
+    return text
+  }
 
   const result = textArray.reduce(
     (prev, char) => {
-      if (new Set(options?.ignoreList).has(char)) {
+      if (ignoreList !== undefined && new Set(ignoreList).has(char)) {
         return prev.concat(char)
       }
       if (haList.has(char)) {
