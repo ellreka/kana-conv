@@ -1,35 +1,44 @@
-import { toDakuon } from '../src'
+import { toDakuon } from '../src/toDakuon'
 
 describe('toDakuon', () => {
   const testData =
-    'かきくけこ さしすせそ たちつてと はひふへほ ぱぴぷぺぽ カキクケコ サシスセソ タチツテト ハヒフヘホ パピプペポ'
+    'かきくけこ さしすせそ たちつてと はひふへほ ぱぴぷぺぽ カキクケコ サシスセソ タチツテト ハヒフヘホ パピプペポ うウ'
   test('全て', () => {
     expect(toDakuon(testData)).toBe(
-      'がぎぐげご ざじずぜぞ だぢづでど ばびぶべぼ ばびぶべぼ ガギグゲゴ ザジズゼゾ ダヂヅデド バビブベボ バビブベボ'
+      'がぎぐげご ざじずぜぞ だぢづでど ばびぶべぼ ばびぶべぼ ガギグゲゴ ザジズゼゾ ダヂヅデド バビブベボ バビブベボ ゔヴ'
     )
   })
 
   test('ひらがなのみ', () => {
     expect(
       toDakuon(testData, {
-        onlyHiragana: true
+        passKatakana: false
       })
     ).toBe(
-      'がぎぐげご ざじずぜぞ だぢづでど ばびぶべぼ ばびぶべぼ カキクケコ サシスセソ タチツテト ハヒフヘホ パピプペポ'
+      'がぎぐげご ざじずぜぞ だぢづでど ばびぶべぼ ばびぶべぼ カキクケコ サシスセソ タチツテト ハヒフヘホ パピプペポ ゔウ'
     )
   })
 
   test('カタカナのみ', () => {
     expect(
       toDakuon(testData, {
-        onlyKatakana: true
+        passHiragana: false
       })
     ).toBe(
-      'かきくけこ さしすせそ たちつてと はひふへほ ぱぴぷぺぽ ガギグゲゴ ザジズゼゾ ダヂヅデド バビブベボ バビブベボ'
+      'かきくけこ さしすせそ たちつてと はひふへほ ぱぴぷぺぽ ガギグゲゴ ザジズゼゾ ダヂヅデド バビブベボ バビブベボ うヴ'
     )
   })
 
-  test('ignoreList', () => {
+  test('何も変換されない', () => {
+    expect(
+      toDakuon(testData, {
+        passHiragana: false,
+        passKatakana: false
+      })
+    ).toBe(testData)
+  })
+
+  test('ignoreList 何も変換されていない', () => {
     expect(
       toDakuon(testData, {
         ignoreList: [
@@ -82,11 +91,11 @@ describe('toDakuon', () => {
           'ピ',
           'プ',
           'ペ',
-          'ポ'
+          'ポ',
+          'う',
+          'ウ'
         ]
       })
-    ).toBe(
-      'かきくけこ さしすせそ たちつてと はひふへほ ぱぴぷぺぽ カキクケコ サシスセソ タチツテト ハヒフヘホ パピプペポ'
-    )
+    ).toBe(testData)
   })
 })

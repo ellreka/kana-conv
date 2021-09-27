@@ -1,4 +1,4 @@
-import { toHandakuon } from '../src'
+import { toHandakuon } from '../src/toHandakuon'
 
 describe('toHandakuon', () => {
   const testData = 'はひふへほ ばびぶべぼ ハヒフヘホ バビブベボ'
@@ -9,7 +9,7 @@ describe('toHandakuon', () => {
   test('ひらがなのみ', () => {
     expect(
       toHandakuon(testData, {
-        onlyHiragana: true
+        passKatakana: false
       })
     ).toBe('ぱぴぷぺぽ ぱぴぷぺぽ ハヒフヘホ バビブベボ')
   })
@@ -17,12 +17,21 @@ describe('toHandakuon', () => {
   test('カタカナのみ', () => {
     expect(
       toHandakuon(testData, {
-        onlyKatakana: true
+        passHiragana: false
       })
     ).toBe('はひふへほ ばびぶべぼ パピプペポ パピプペポ')
   })
 
-  test('ignoreList', () => {
+  test('何も変換されない', () => {
+    expect(
+      toHandakuon(testData, {
+        passHiragana: false,
+        passKatakana: false
+      })
+    ).toBe(testData)
+  })
+
+  test('ignoreList 何も変換されない', () => {
     expect(
       toHandakuon(testData, {
         ignoreList: [
