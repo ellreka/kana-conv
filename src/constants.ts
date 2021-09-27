@@ -10,7 +10,7 @@ export const PA_HIRAGANA = ['ぱ', 'ぴ', 'ぷ', 'ぺ', 'ぽ']
 
 export const PA_KATAKANA = ['パ', 'ピ', 'プ', 'ペ', 'ポ']
 
-export const DAKU_HIRAGANA = [
+export const SEI_HIRAGANA = [
   'か',
   'き',
   'く',
@@ -29,7 +29,7 @@ export const DAKU_HIRAGANA = [
   ...HA_HIRAGANA
 ]
 
-export const DAKU_KATAKANA = [
+export const SEI_KATAKANA = [
   'カ',
   'キ',
   'ク',
@@ -46,4 +46,42 @@ export const DAKU_KATAKANA = [
   'テ',
   'ト',
   ...HA_KATAKANA
+]
+
+export const DAKU_HIRAGANA = [
+  'が',
+  'ぎ',
+  'ぐ',
+  'げ',
+  'ご',
+  'ざ',
+  'じ',
+  'ず',
+  'ぜ',
+  'ぞ',
+  'だ',
+  'ぢ',
+  'づ',
+  'で',
+  'ど',
+  ...BA_HIRAGANA
+]
+
+export const DAKU_KATAKANA = [
+  'ガ',
+  'ギ',
+  'グ',
+  'ゲ',
+  'ゴ',
+  'ザ',
+  'ジ',
+  'ズ',
+  'ゼ',
+  'ゾ',
+  'ダ',
+  'ヂ',
+  'ヅ',
+  'デ',
+  'ド',
+  ...BA_KATAKANA
 ]
